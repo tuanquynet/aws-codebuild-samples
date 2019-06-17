@@ -6,6 +6,7 @@ phases:
       - npm install
   build:
     commands:
+      - aws cloudfront help
       - npm test
 artifacts:
   files:
