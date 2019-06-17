@@ -8,7 +8,7 @@ phases:
       - npm install
   build:
     commands:
-      - aws cloudfront help
+      - if [ $STAGE = prod ]; then aws cloudfront help; echo "help"; fi;
       - npm test
 artifacts:
   files:
