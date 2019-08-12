@@ -2,8 +2,9 @@ const express = require('express');
 const calc = require('./calculator.js');
 var numeral = require('numeral');
 var path = require('path');
+var fileService = require('./services/file');
 
-const PORT = 8080;
+const PORT = process.env.PORT || 8000;
 const HOST = '0.0.0.0';
 
 const app = express();
@@ -108,8 +109,19 @@ app.get('/divide', cacheRoute(), function (req, res) {
   sendResult(value, res);
 })
 
+app.get('/test-s3', (req, res, next) => {
+  fileService
+    .testS3()
+    .then(() => {
+      res.send('done');
+    })
+    .catch(next);
+})
+
 if (!module.parent) {
-  var server = app.listen(PORT, HOST);
+  var server = app.listen(PORT, HOST, () => {
+    console.log(`server listen on ${PORT}`);
+  });
   server.on('close', function () {
     if (cache) {
       cache.client.end(true);

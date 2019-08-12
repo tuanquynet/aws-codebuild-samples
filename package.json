@@ -3,14 +3,23 @@
   "version": "1.0.0",
   "main": "service.js",
   "scripts": {
+    "dev": "nodemon service.js",
     "start": "node service.js",
     "test": "./node_modules/nyc/bin/nyc.js --reporter=lcov ./node_modules/mocha/bin/mocha"
   },
   "dependencies": {
-    "numeral": "^2.0.0",
+    "aws-sdk": "^2.507.0",
+    "dotenv": "^8.0.0",
     "express": "^4.13.3",
+    "express-redis-cache": "^0.1.0",
+    "lodash": "^4.17.15",
+    "mandrill-api": "^1.0.45",
+    "mysql2": "^1.6.5",
+    "node-fetch": "^2.6.0",
+    "nodemon": "^1.19.1",
+    "numeral": "^2.0.0",
     "redis": "^2.8.0",
-    "express-redis-cache": "^0.1.0"
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "mocha": "^4.0.0",
