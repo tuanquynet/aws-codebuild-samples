@@ -3,6 +3,7 @@ const calc = require('./calculator.js');
 var numeral = require('numeral');
 var path = require('path');
 var fileService = require('./services/file');
+var lambda = require('./services/lambda');
 
 const PORT = process.env.PORT || 8000;
 const HOST = '0.0.0.0';
@@ -114,6 +115,15 @@ app.get('/test-s3', (req, res, next) => {
     .testS3()
     .then(() => {
       res.send('done');
+    })
+    .catch(next);
+})
+
+app.get('/test-lambda', (req, res, next) => {
+  lambda
+    .testLambda()
+    .then((result) => {
+      res.send(result);
     })
     .catch(next);
 })

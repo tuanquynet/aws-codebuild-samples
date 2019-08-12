@@ -1,3 +1,9 @@
+## Deploy app manually
+- `sh copy-to-release.sh`
+- copy the releases folder onto VPS
+- install node modules: `npm install`
+- start app: `npm start`
+
 ## AWS CodeBuild Samples
 
 Utilities and samples for building on CodeBuild
